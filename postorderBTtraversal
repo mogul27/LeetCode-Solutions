@@ -1,0 +1,23 @@
+class Solution:
+
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+
+        path = []
+
+        path = self._postorderHelper(root, path)
+        
+        return path
+
+    def _postorderHelper(self, root, path):
+
+        if root is not None:
+        
+            if root.left:
+                self._postorderHelper(root.left, path)
+            
+            if root.right:
+                self._postorderHelper(root.right, path)
+            
+            path.append(root.val)
+
+        return path
