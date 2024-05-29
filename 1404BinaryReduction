@@ -1,0 +1,28 @@
+class Solution:
+    def numSteps(self, s: str) -> int:
+
+        binary_number = 0
+        digit_len = len(s) - 1
+
+        # Obtain binary number
+        for char in s:
+            if char == "1":
+                binary_number += (2**digit_len)
+            digit_len -= 1
+
+        # If already 1, 0 steps required
+        if binary_number == 1:
+            return 0
+
+        step_counter = 0
+        # Execute algorithm
+        while binary_number != 1:
+            if binary_number % 2 == 0:
+                binary_number = binary_number // 2
+            else:
+                binary_number += 1
+            
+            step_counter += 1
+        
+        return step_counter
+            
