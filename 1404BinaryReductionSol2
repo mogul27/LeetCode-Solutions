@@ -1,0 +1,26 @@
+class Solution:
+    def numSteps(self, s: str) -> int:
+
+        steps=0
+        binary=list(s)
+        
+        while len(binary) > 1:    
+            # If number is even, remove digit to divide by 2 else add 1 
+            if binary[-1] == '0':
+                binary.pop()
+                steps += 1
+            else:
+                # Go from back apart from last number to end
+                i = len(binary) - 1
+                while binary[i] == '1':
+                    if i!=0:
+                        binary[i] = '0'
+                    else:
+                        binary.append('0')
+                        break
+                    i-=1
+
+                binary[i] = '1'
+                steps += 1
+        
+        return steps
